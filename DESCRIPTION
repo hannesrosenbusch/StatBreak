@@ -1,0 +1,16 @@
+Package: StatBreak
+Type: Package
+Title: Examine robustness of sample statistics to case deletions
+Version: 0.1.0
+Author: Hannes Rosenbusch
+Maintainer: Hannes Rosenbusch <h.rosenbusch@uvt.nlt>
+Description: Through this package, researchers can conduct easy and insightful robustness tests.
+    Generally, the provided function 'study_break' answers the question: How few and which cases would need to be deleted
+    for a substantial change in the sample statistic?
+    The underlying algorithm searches the space of possible subsamples through genetic evolution.
+    Most code for implementing the generic genetic algorithm code was copied and modified from the
+    general purpose package 'genalg' by Egon Willighagen and Michel Ballings (currently not maintained).
+License: Everybody is free to use and distribute the code if they cite the original.
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
