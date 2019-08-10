@@ -355,5 +355,7 @@ stat_break = function(data = NULL,
 
   # output best filter -------------------------------------------------------------
   solution = best(alg)
+  print('Exclude the following observations (rows) for a less interesting finding:')
+  print(which(solution == 1))
   return(solution) #returns vector with 1 = excuded and 0 = included
 }
