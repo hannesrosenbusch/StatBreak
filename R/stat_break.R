@@ -41,12 +41,12 @@ stat_break = function(data = NULL,
                    statistic_computation = NULL, #formula for the computation of the statistic
                    max_exclusions = NULL,
 
-                   pop = 500, #population size of each generation (number datasets), higher is slower but more accurate min 500
+                   pop = 1000, #population size of each generation (number datasets), higher is slower but more accurate min 500
                    max_generations = 2000, #maximum number of generations. higher is slower but more accurate min 100
                    exclusion_cost = 0.01, #stable exclusion costs, should not need tuning
                    prop_included_cases = 0.95, #initial proportion of included cases (0-1), lower is much slower but more accurate
                    chance_of_mutation = 0.02, #chance that a gene mutates, higher is slower but more accurate max 0.1
-                   stop_search = 100,#after how many generations without improvements is result returned
+                   stop_search = 200,#after how many generations without improvements is result returned
                    random_seed = 42){
 
 

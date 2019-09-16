@@ -5,10 +5,10 @@
 \title{Find smallest subset to exclude from sample for effect/pattern to disappear}
 \usage{
 stat_break(data = NULL, goal_value = NULL,
-  statistic_computation = NULL, max_exclusions = NULL, pop = 500,
+  statistic_computation = NULL, max_exclusions = NULL, pop = 1000,
   max_generations = 2000, exclusion_cost = 0.01,
   prop_included_cases = 0.95, chance_of_mutation = 0.02,
-  stop_search = 100, random_seed = 42)
+  stop_search = 200, random_seed = 42)
 }
 \arguments{
 \item{data}{A data.frame containing the observations as rows.}
