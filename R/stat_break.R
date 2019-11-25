@@ -357,5 +357,5 @@ stat_break = function(data = NULL,
   solution = best(alg)
   print('Exclude the following observations (rows) for a less interesting finding:')
   print(which(solution == 1))
-  return(which(solution == 1)) #returns row indeces
+  return(sort(which(solution == 1))) #returns row indeces
 }
