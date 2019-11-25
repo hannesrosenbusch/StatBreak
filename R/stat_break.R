@@ -20,7 +20,7 @@
 #' @param random_seed Seed for replicability.
 #' @param max_exclusions maximum number of cases to be excluded
 #'
-#' @return Vector of zeros and ones with length equal to number of observations in data. Ones indicate exclusion.
+#' @return Vector of row indeces of rows to be excluded
 #'
 #' @examples
 #' coefficient_computation <- function(data){
@@ -357,5 +357,5 @@ stat_break = function(data = NULL,
   solution = best(alg)
   print('Exclude the following observations (rows) for a less interesting finding:')
   print(which(solution == 1))
-  return(solution) #returns vector with 1 = excuded and 0 = included
+  return(which(solution == 1)) #returns row indeces
 }

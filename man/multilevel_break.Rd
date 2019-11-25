@@ -4,11 +4,20 @@
 \alias{multilevel_break}
 \title{Find smallest subset to exclude from clustered sample for effect/pattern to disappear}
 \usage{
-multilevel_break(data = NULL, goal_value = NULL,
-  statistic_computation = NULL, grouping_var = NULL,
-  max_exclusions = NULL, pop = 200, max_generations = 300,
-  exclusion_cost = 0.01, prop_included_cases = 0.9,
-  chance_of_mutation = 0.05, stop_search = 100, random_seed = 42)
+multilevel_break(
+  data = NULL,
+  goal_value = NULL,
+  statistic_computation = NULL,
+  grouping_var = NULL,
+  max_exclusions = NULL,
+  pop = 200,
+  max_generations = 300,
+  exclusion_cost = 0.01,
+  prop_included_cases = 0.9,
+  chance_of_mutation = 0.05,
+  stop_search = 100,
+  random_seed = 42
+)
 }
 \arguments{
 \item{data}{A data.frame containing the observations as rows.}

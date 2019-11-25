@@ -3,7 +3,6 @@
 \docType{package}
 \name{StatBreak}
 \alias{StatBreak}
-\alias{StatBreak-package}
 \title{StatBreak package}
 \description{
 Through this package, researchers can conduct easy and insightful robustness tests.

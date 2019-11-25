@@ -4,11 +4,19 @@
 \alias{stat_break}
 \title{Find smallest subset to exclude from sample for effect/pattern to disappear}
 \usage{
-stat_break(data = NULL, goal_value = NULL,
-  statistic_computation = NULL, max_exclusions = NULL, pop = 1000,
-  max_generations = 2000, exclusion_cost = 0.01,
-  prop_included_cases = 0.95, chance_of_mutation = 0.02,
-  stop_search = 200, random_seed = 42)
+stat_break(
+  data = NULL,
+  goal_value = NULL,
+  statistic_computation = NULL,
+  max_exclusions = NULL,
+  pop = 1000,
+  max_generations = 2000,
+  exclusion_cost = 0.01,
+  prop_included_cases = 0.95,
+  chance_of_mutation = 0.02,
+  stop_search = 200,
+  random_seed = 42
+)
 }
 \arguments{
 \item{data}{A data.frame containing the observations as rows.}
@@ -34,7 +42,7 @@ stat_break(data = NULL, goal_value = NULL,
 \item{random_seed}{Seed for replicability.}
 }
 \value{
-Vector of zeros and ones with length equal to number of observations in data. Ones indicate exclusion.
+Vector of row indeces of rows to be excluded
 }
 \description{
 The function iteratively learns which observations should at least be excluded from

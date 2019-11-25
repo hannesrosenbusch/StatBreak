@@ -13,4 +13,4 @@ Description: Through this package, researchers can conduct easy and insightful r
 License: Everybody is free to use and distribute the code if they cite the original.
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.1
