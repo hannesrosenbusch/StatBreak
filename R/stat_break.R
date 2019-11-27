@@ -326,8 +326,8 @@ stat_break = function(data = NULL,
     x = statistic_computation(data[0==bestSolution,])
     stab = alg$stability
     stop = alg$stop_search
-    print(stab)
-    cat('Generations w.o. change: ', stab , '/', stop , ',', 'dropped rows: ', 'sum(bestSolution)', ',', 'target statistic: ', x, '\n')
+    cat('Convergence (Generations w.o. change): ', stab , '/', stop , ',', 'Dropped rows: ', rowcount, ',', 'Target statistic: ', x, '\n')
+    rowcount = sum(bestSolution)
     # print(alg$iter)
     # print(paste("dropped observations:", sum(bestSolution)))
     # print(paste("observed statistic:", x))
