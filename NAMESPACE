@@ -1,2 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("stats", "dnorm", "runif")
+importFrom("utils", "combn")
+importFrom("testit", "assert")

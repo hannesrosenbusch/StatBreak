@@ -20,7 +20,7 @@
 #' @param random_seed Seed for replicability.
 #' @param max_exclusions maximum number of cases to be excluded
 #'
-#' @return Vector of row indeces of rows to be excluded
+#' @return Vector of row indeces to be excluded
 #'
 #' @examples
 #' coefficient_computation <- function(data){
