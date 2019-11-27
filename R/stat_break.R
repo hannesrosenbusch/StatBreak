@@ -324,7 +324,10 @@ stat_break = function(data = NULL,
     } else {
       bestSolution = alg$population[filter,]}
     x = statistic_computation(data[0==bestSolution,])
-    cat('Generations w.o. change: ', alg$stability, '/', alg$stop_search, ',', 'dropped rows: ', 'sum(bestSolution)', ',', 'target statistic: ', x)
+    stab = alg$stability
+    stop = alg$stop_search
+    print(stab)
+    cat('Generations w.o. change: ', stab , '/', stop , ',', 'dropped rows: ', 'sum(bestSolution)', ',', 'target statistic: ', x, '/n')
     # print(alg$iter)
     # print(paste("dropped observations:", sum(bestSolution)))
     # print(paste("observed statistic:", x))
