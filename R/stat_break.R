@@ -162,7 +162,6 @@ stat_break = function(data = NULL,
 
 
         if(stability == stop_search){
-          #print(paste(stop_search,"iterations without change"))
           result = list(type="binary chromosome", size=size,
                         popSize=popSize, iters=iters, suggestions=suggestions,
                         population=population, elitism=elitism, mutationChance=mutationChance,
@@ -326,11 +325,8 @@ stat_break = function(data = NULL,
     x = statistic_computation(data[0==bestSolution,])
     stab = alg$stability
     stop = alg$stop_search
-    cat('Convergence (Generations w.o. change): ', stab , '/', stop , ',', 'Dropped rows: ', rowcount, ',', 'Target statistic: ', x, '\n')
     rowcount = sum(bestSolution)
-    # print(alg$iter)
-    # print(paste("dropped observations:", sum(bestSolution)))
-    # print(paste("observed statistic:", x))
+    cat('Convergence (Generations w.o. change): ', stab , '/', stop , ',', 'Dropped rows: ', rowcount, ',', 'Target statistic: ', x, '\n')
   }
 
 
