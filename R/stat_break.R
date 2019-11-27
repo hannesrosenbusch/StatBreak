@@ -166,7 +166,7 @@ stat_break = function(data = NULL,
           result = list(type="binary chromosome", size=size,
                         popSize=popSize, iters=iters, suggestions=suggestions,
                         population=population, elitism=elitism, mutationChance=mutationChance,
-                        evaluations=evalVals, best=bestEvals, mean=meanEvals);
+                        evaluations=evalVals, best=bestEvals, mean=meanEvals, stability = stability, stop_search = stop_search);
           class(result) = "rbga";
 
           return(result);
@@ -324,7 +324,7 @@ stat_break = function(data = NULL,
     } else {
       bestSolution = alg$population[filter,]}
     x = statistic_computation(data[0==bestSolution,])
-    cat('Convergence: ', stability, '/', stop_search, ',', 'dropped rows: ', 'sum(bestSolution)', ',', 'target statistic: ', x)
+    cat('Generations w.o. change: ', alg$stability, '/', alg$stop_search, ',', 'dropped rows: ', 'sum(bestSolution)', ',', 'target statistic: ', x)
     # print(alg$iter)
     # print(paste("dropped observations:", sum(bestSolution)))
     # print(paste("observed statistic:", x))
