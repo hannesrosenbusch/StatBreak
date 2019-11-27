@@ -326,7 +326,7 @@ stat_break = function(data = NULL,
     stab = alg$stability
     stop = alg$stop_search
     rowcount = sum(bestSolution)
-    cat('Convergence (Generations w.o. change): ', stab , '/', stop , ',', 'Dropped rows: ', rowcount, ',', 'Target statistic: ', x, '\n')
+    cat('Dropped rows: ', rowcount, ',', ' Target statistic: ', x, ',', ' Convergence (Generations w.o. change): ', stab , '/', stop, '\n', sep = '')
   }
 
 
