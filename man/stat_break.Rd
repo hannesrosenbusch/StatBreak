@@ -42,7 +42,7 @@ stat_break(
 \item{random_seed}{Seed for replicability.}
 }
 \value{
-Vector of row indeces to be excluded
+named list. includes how many and which rows were excluded plus the original and new statistic
 }
 \description{
 The function iteratively learns which observations should at least be excluded from

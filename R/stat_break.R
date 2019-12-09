@@ -20,7 +20,7 @@
 #' @param random_seed Seed for replicability.
 #' @param max_exclusions maximum number of cases to be excluded
 #'
-#' @return Vector of row indeces to be excluded
+#' @return named list. includes how many and which rows were excluded plus the original and new statistic
 #'
 #' @examples
 #' coefficient_computation <- function(data){
@@ -356,6 +356,9 @@ stat_break = function(data = NULL,
   # output best filter -------------------------------------------------------------
   solution = best(alg)
   print('Exclude the following observations (rows) for a less interesting finding:')
-  print(which(solution == 1))
-  return(sort(which(solution == 1))) #returns row indeces
+  excluded_rows = sort(which(solution == 1))
+  print(excluded_rows)
+  new_value = statistic_computation(data[-excluded_rows,])
+  output = list("number_exclusions"= length(excluded_rows), "original_value" = v, "new_value" = new_value, "excluded_rows" = excluded_rows)
+  return(output) #returns row indeces
 }
