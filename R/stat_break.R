@@ -248,8 +248,8 @@ stat_break = function(data = NULL,
 
           if(large_sample_drops){
             newPopulation[elitism,] = newPopulation[1,]
-            indexrandom = sample(which(newPopulation[elitism,] == 1), 1)
-            newPopulation[elitism,indexrandom] = 0}
+            indexrandom = sample(which(newPopulation[elitism,] == 0), 1)
+            newPopulation[elitism,indexrandom] = 1}
         }
           population = newPopulation;
           evalVals   = newEvalVals;
