@@ -19,6 +19,7 @@
 #' @param stop_search After how many generations without change is the 'converged' result returned.
 #' @param random_seed Seed for replicability.
 #' @param max_exclusions maximum number of cases to be excluded
+#' @param large_sample_drops drops one row from best (helps converge with large samples)
 #'
 #' @return named list. includes how many and which rows were excluded plus the original and new statistic
 #'
@@ -27,7 +28,7 @@
 #' statistic <- cor(data$Sepal.Length, data$Petal.Width)
 #' return(statistic)}
 #'
-#' filter <- stat_break(data = iris, statistic_computation = coefficient_computation, goal_value = 0.2, max_generations = 500)
+#' filter <- stat_break(data = iris, statistic_computation = coefficient_computation, goal_value = 0.78, max_generations = 500)
 #' print(filter)
 #'
 #' @export
@@ -46,8 +47,8 @@ stat_break = function(data = NULL,
                    exclusion_cost = 0.01, #stable exclusion costs, should not need tuning
                    prop_included_cases = 0.95, #initial proportion of included cases (0-1), lower is much slower but more accurate
                    chance_of_mutation = 0.02, #chance that a gene mutates, higher is slower but more accurate max 0.1
-                   stop_search = 200,#after how many generations without improvements is result returned
-                   random_seed = 42){
+                   stop_search = 20,#after how many generations without improvements is result returned
+                   random_seed = 42, large_sample_drops = FALSE){
 
 
   # setup -------------------------------------------------------------------
@@ -76,7 +77,7 @@ stat_break = function(data = NULL,
     elitism=NA, zeroToOneRatio=NA,
     monitorFunc=NULL, evalFunc=NULL,
     showSettings=FALSE, verbose=FALSE,
-    parentProb= NA, stop_search = NA
+    parentProb= NA, stop_search = NA, large_sample_drops = TRUE
   ) {
     if (is.null(evalFunc)) {
       stop("An evaluation function must be provided. See the evalFunc parameter.");
@@ -165,7 +166,7 @@ stat_break = function(data = NULL,
           result = list(type="binary chromosome", size=size,
                         popSize=popSize, iters=iters, suggestions=suggestions,
                         population=population, elitism=elitism, mutationChance=mutationChance,
-                        evaluations=evalVals, best=bestEvals, mean=meanEvals, stability = stability, stop_search = stop_search);
+                        evaluations=evalVals, best=bestEvals, mean=meanEvals, stability = stability, stop_search = stop_search, large_sample_drops = large_sample_drops);
           class(result) = "rbga";
 
           return(result);
@@ -214,6 +215,7 @@ stat_break = function(data = NULL,
             newEvalVals[1:elitism] = sortedEvaluations$x[1:elitism]
           } # ok, save nothing
 
+
           # fill the rest by doing crossover
           if (vars > 1) {
             if (verbose) cat("  applying crossover...\n");
@@ -244,6 +246,11 @@ stat_break = function(data = NULL,
               sortedPopulation[sample(1:popSize, popSize-elitism),];
           }
 
+          if(large_sample_drops){
+            newPopulation[elitism,] = newPopulation[1,]
+            indexrandom = sample(which(newPopulation[elitism,] == 1), 1)
+            newPopulation[elitism,indexrandom] = 0}
+        }
           population = newPopulation;
           evalVals   = newEvalVals;
 
@@ -263,7 +270,6 @@ stat_break = function(data = NULL,
 
             if (verbose) cat(paste(mutationCount, "mutations applied\n"));
           }
-        }
 
 
       }
@@ -350,7 +356,7 @@ stat_break = function(data = NULL,
                  mutationChance=chance_of_mutation,
                  elitism=floor(0.1*pop), zeroToOneRatio=(prop_included_cases *nrow(data)) / ((1-prop_included_cases)* nrow(data) + 1^-10),#genes,
                  monitorFunc=monitor, evalFunc=evaluate,
-                 showSettings=FALSE, verbose=FALSE, stop_search = stop_search,
+                 showSettings=FALSE, verbose=FALSE, stop_search = stop_search, large_sample_drops = large_sample_drops,
                  parentProb= dnorm(1:pop, mean=0, sd=(pop/3)))
 
   # output best filter -------------------------------------------------------------

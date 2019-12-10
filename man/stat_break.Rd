@@ -14,8 +14,9 @@ stat_break(
   exclusion_cost = 0.01,
   prop_included_cases = 0.95,
   chance_of_mutation = 0.02,
-  stop_search = 200,
-  random_seed = 42
+  stop_search = 20,
+  random_seed = 42,
+  large_sample_drops = FALSE
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ stat_break(
 \item{stop_search}{After how many generations without change is the 'converged' result returned.}
 
 \item{random_seed}{Seed for replicability.}
+
+\item{large_sample_drops}{drops one row from best (helps converge with large samples)}
 }
 \value{
 named list. includes how many and which rows were excluded plus the original and new statistic
@@ -58,7 +61,7 @@ coefficient_computation <- function(data){
 statistic <- cor(data$Sepal.Length, data$Petal.Width)
 return(statistic)}
 
-filter <- stat_break(data = iris, statistic_computation = coefficient_computation, goal_value = 0.2, max_generations = 500)
+filter <- stat_break(data = iris, statistic_computation = coefficient_computation, goal_value = 0.78, max_generations = 500)
 print(filter)
 
 }
