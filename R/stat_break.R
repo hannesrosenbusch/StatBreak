@@ -47,7 +47,7 @@ stat_break = function(data = NULL,
                    exclusion_cost = 0.01, #stable exclusion costs, should not need tuning
                    prop_included_cases = 0.95, #initial proportion of included cases (0-1), lower is much slower but more accurate
                    chance_of_mutation = 0.02, #chance that a gene mutates, higher is slower but more accurate max 0.1
-                   stop_search = 20,#after how many generations without improvements is result returned
+                   stop_search = 200,#after how many generations without improvements is result returned
                    random_seed = 42, large_sample_drops = FALSE){
 
 

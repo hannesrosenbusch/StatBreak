@@ -14,7 +14,7 @@ stat_break(
   exclusion_cost = 0.01,
   prop_included_cases = 0.95,
   chance_of_mutation = 0.02,
-  stop_search = 20,
+  stop_search = 200,
   random_seed = 42,
   large_sample_drops = FALSE
 )
