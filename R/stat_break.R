@@ -152,10 +152,17 @@ stat_break = function(data = NULL,
         if(large_sample_drops){
           population[elitism,] = population[1,]
           print(sum(population[1,]))
+          print(evalFunc(population[1,]))
+          print(sum(population[2,]))
+          print(evalFunc(population[2,]))
+          print(sum(population[3,]))
+          print(evalFunc(population[3,]))
           indexrandom = sample(which(population[elitism,] == 1), 1)
           population[elitism,indexrandom] = 0
-          print('check')
-          print(sum(population[elitism,]))}
+          print('checkerino')
+          print(sum(population[elitism,]))
+          print(evalFunc(population[elitism,]))}
+      }
 
         if (verbose) cat(paste("Starting iteration", iter, "\n"));
 
