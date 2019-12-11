@@ -151,12 +151,8 @@ stat_break = function(data = NULL,
 
         if(large_sample_drops){
           population[2,] = population[1,]
-          print(sum(population[1,]))
-          # print(evalFunc(population[1,]))
           indexrandom = sample(x = which(population[2,] == 1), size = sample(x = 0:round(0.25*sum(population[2,])), size =1))
           population[2,indexrandom] = 0
-          print(sum(population[2,]))
-          # print(evalFunc(population[2,]))
           evalVals[2] = NA}
 
 
