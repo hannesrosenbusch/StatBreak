@@ -153,7 +153,7 @@ stat_break = function(data = NULL,
           population[2,] = population[1,]
           print(sum(population[1,]))
           # print(evalFunc(population[1,]))
-          indexrandom = sample(which(population[2,] == 1), runif(1, min = 1, max = sum(population[2,])))
+          indexrandom = sample(which(population[2,] == 1), runif(1, min = 0.75*sum(population[2,]), max = sum(population[2,])))
           population[2,indexrandom] = 0
           print(sum(population[2,]))
           # print(evalFunc(population[2,]))
