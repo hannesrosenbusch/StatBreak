@@ -149,15 +149,6 @@ stat_break = function(data = NULL,
       meanEvals = rep(NA, iters);
       evalVals = rep(NA, popSize);
       for (iter in 1:iters) {
-        if(large_sample_drops){
-          population[2,] = population[1,]
-          print(sum(population[1,]))
-          print(evalFunc(population[1,]))
-          indexrandom = sample(which(population[2,] == 1), 1)
-          population[2,indexrandom] = 0
-          print('checkerino')
-          print(sum(population[2,]))
-          print(evalFunc(population[2,]))}
 
 
         if (verbose) cat(paste("Starting iteration", iter, "\n"));
@@ -208,6 +199,16 @@ stat_break = function(data = NULL,
 
           monitorFunc(result);
         }
+
+        if(large_sample_drops){
+          population[2,] = population[1,]
+          print(sum(population[1,]))
+          print(evalFunc(population[1,]))
+          indexrandom = sample(which(population[2,] == 1), 1)
+          population[2,indexrandom] = 0
+          print('checkerino')
+          print(sum(population[2,]))
+          print(evalFunc(population[2,]))}
 
         if (iter < iters) { # ok, must create the next generation
           if (verbose) cat("Creating next generation...\n");
