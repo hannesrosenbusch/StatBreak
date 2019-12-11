@@ -149,7 +149,7 @@ print('a')
       meanEvals = rep(NA, iters);
       evalVals = rep(NA, popSize);
       for (iter in 1:iters) {
-        print('b')
+print('b')
 
         if(large_sample_drops){
           population[2,] = population[1,]
@@ -159,7 +159,8 @@ print('a')
           population[2,indexrandom] = 0
           print('checkerino')
           print(sum(population[2,]))
-          print(evalFunc(population[2,]))}
+          print(evalFunc(population[2,]))
+          evalVals[2] = NA}
 
 
         if (verbose) cat(paste("Starting iteration", iter, "\n"));
