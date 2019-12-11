@@ -162,7 +162,7 @@ stat_break = function(data = NULL,
           print('checkerino')
           print(sum(population[elitism,]))
           print(evalFunc(population[elitism,]))}
-      }
+
 
         if (verbose) cat(paste("Starting iteration", iter, "\n"));
 
