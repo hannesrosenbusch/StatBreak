@@ -325,7 +325,6 @@ stat_break = function(data = NULL,
     filter = alg$evaluations == minEval
     bestObjectCount = sum(filter) #rep(1, alg$popSize)[filter]
     print(bestObjectCount)
-    aaa
     if (bestObjectCount > 1) {
       bestSolution = alg$population[filter,][1,]
     } else {
