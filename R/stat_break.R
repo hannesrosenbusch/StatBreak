@@ -149,6 +149,13 @@ stat_break = function(data = NULL,
       meanEvals = rep(NA, iters);
       evalVals = rep(NA, popSize);
       for (iter in 1:iters) {
+        if(large_sample_drops){
+          population[elitism,] = population[1,]
+          print(sum(population[1,]))
+          indexrandom = sample(which(population[elitism,] == 1), 1)
+          population[elitism,indexrandom] = 0
+          print('check')
+          print(sum(population[elitism,]))}
 
         if (verbose) cat(paste("Starting iteration", iter, "\n"));
 
@@ -246,10 +253,7 @@ stat_break = function(data = NULL,
               sortedPopulation[sample(1:popSize, popSize-elitism),];
           }
 
-          if(large_sample_drops){
-            newPopulation[elitism,] = newPopulation[1,]
-            indexrandom = sample(which(newPopulation[elitism,] == 1), 1)
-            newPopulation[elitism,indexrandom] = 0}
+
         }
           population = newPopulation;
           evalVals   = newEvalVals;
@@ -324,7 +328,6 @@ stat_break = function(data = NULL,
     minEval = min(alg$evaluations)
     filter = alg$evaluations == minEval
     bestObjectCount = sum(filter) #rep(1, alg$popSize)[filter]
-    print(bestObjectCount)
     if (bestObjectCount > 1) {
       bestSolution = alg$population[filter,][1,]
     } else {
