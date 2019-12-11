@@ -141,7 +141,6 @@ stat_break = function(data = NULL,
           }
         }
       }
-print('a')
       # do iterations
       stability = 1
       bestsolution = 999999
@@ -149,17 +148,15 @@ print('a')
       meanEvals = rep(NA, iters);
       evalVals = rep(NA, popSize);
       for (iter in 1:iters) {
-print('b')
 
         if(large_sample_drops){
           population[2,] = population[1,]
           print(sum(population[1,]))
-          print(evalFunc(population[1,]))
-          indexrandom = sample(which(population[2,] == 1), 1)
+          # print(evalFunc(population[1,]))
+          indexrandom = sample(which(population[2,] == 1), runif(1, min = 1, max = sum(population[2,])))
           population[2,indexrandom] = 0
-          print('checkerino')
           print(sum(population[2,]))
-          print(evalFunc(population[2,]))
+          # print(evalFunc(population[2,]))
           evalVals[2] = NA}
 
 
@@ -215,7 +212,6 @@ print('b')
 
 
         if (iter < iters) { # ok, must create the next generation
-          print('c')
 
           if (verbose) cat("Creating next generation...\n");
           newPopulation = matrix(nrow=popSize, ncol=vars);
@@ -288,7 +284,6 @@ print('b')
 
       }
     }
-    print('d')
 
     # report on GA settings
     result = list(type="binary chromosome", size=size,
@@ -296,7 +291,6 @@ print('b')
                   population=population, elitism=elitism, mutationChance=mutationChance,
                   evaluations=evalVals, best=bestEvals, mean=meanEvals);
     class(result) = "rbga";
-    print('e')
 
     return(result);
   }
