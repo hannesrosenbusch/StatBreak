@@ -283,7 +283,7 @@ multilevel_break = function(data = NULL,#a data.frame containing the observation
     result = list(type="binary chromosome", size=size,
                   popSize=popSize, iters=iters, suggestions=suggestions,
                   population=population, elitism=elitism, mutationChance=mutationChance,
-                  evaluations=evalVals, best=bestEvals, mean=meanEvals, stop = stop_search, stab = stability);
+                  evaluations=evalVals, best=bestEvals, mean=meanEvals, stop_search = stop_search, stability = stability);
     class(result) = "rbga";
 
     return(result);
@@ -375,5 +375,7 @@ multilevel_break = function(data = NULL,#a data.frame containing the observation
   # output best filter -------------------------------------------------------------
   solution = best(alg)
   excluded_groups = unique(data[,grouping_var])[solution == 1]
+  nr_excluded_groups = len(excluded_groups)
+  output = list(excluded_groups)
   return(excluded_groups)
 }
