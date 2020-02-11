@@ -376,6 +376,6 @@ multilevel_break = function(data = NULL,#a data.frame containing the observation
   solution = best(alg)
   excluded_groups = unique(data[,grouping_var])[solution == 1]
   nr_excluded_groups = length(excluded_groups)
-  output = list(excluded_groups)
+  output = list("excluded groups" = excluded_groups, "number_exclusions"= nr_excluded_groups)
   return(output)
 }
