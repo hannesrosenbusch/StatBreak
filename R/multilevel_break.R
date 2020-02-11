@@ -377,7 +377,7 @@ multilevel_break = function(data = NULL,#a data.frame containing the observation
   excluded_groups = unique(data[,grouping_var])[solution == 1]
   nr_excluded_groups = length(excluded_groups)
   excluded_rows = sort(which(solution == 1))
-  new_value = statistic_computation(data[-excluded_rows,])
+  new_value = statistic_computation(data[!is.element(data[,grouping_var],excluded_groups),])
   output = list("excluded groups" = excluded_groups, "number_exclusions"= nr_excluded_groups, new_value = new_value)
   return(output)
 }
